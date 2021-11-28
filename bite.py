@@ -7,13 +7,10 @@ class Num:
         elif type(num) == str:
             self.num = int(num, base=16)
 
-        self.set_conversions()
-        self.set_size(size)
-
-    def set_conversions(self):
         self.bin = bin(self.num)
-        self.oct = oct(self.num)
-        self.hex = hex(self.num)
+        self.size = None
+        self.set_size(size)
+        self.bin = get_bin(self.num, self.size)
 
     def set_size(self, size):
         self.size = max(size, len(self.bin)-2)
@@ -25,4 +22,15 @@ class Num:
         return str(self.num)
 
     def __getitem__(self, i):
-        return self.bin[len(self.bin) - 1 - i]
+        access = lambda ind: self.bin[len(self.bin) - 1 - ind]
+        if type(i) == int:
+            return access(i)
+        else: #otherwise assume it is a slice
+            return "".join([access(j) for j in range(i.start, i.stop-1, -1)])
+
+def get_bin(num: int, length: int):
+    bin_num = bin(num)[2:]
+    if length > (current := len(bin_num)):
+        bin_num = "0"*(length-current) + bin_num
+    return "0b" + bin_num
+
