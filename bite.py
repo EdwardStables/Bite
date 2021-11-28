@@ -12,6 +12,11 @@ class Num:
         self.set_size(size)
         self.bin = get_bin(self.num, self.size)
 
+        self.hex = hex(self.num)
+        self.oct = oct(self.num)
+        self.dec = "0d" + str(self.num)
+
+
     def set_size(self, size):
         self.size = max(size, len(self.bin)-2)
 
