@@ -13,6 +13,9 @@ def test_base_arg():
     n = Num("12", base=16)
     assert n.num == 18
     assert n.bin == "0b10010"
+    n = Num("12", base=3)
+    assert n.num == 5
+    assert n.bin == "0b101"
 
 def test_size_arg():
     n = Num(193)
@@ -22,7 +25,7 @@ def test_size_arg():
     assert n.size == 12 
 
     n = Num(193, size = 4)
-    assert n.size == 8
+    assert n.size == 4
 
 def test_size_arg_ext():
     n = Num(1, size=8)
@@ -50,3 +53,38 @@ def test_slicing():
     n = Num(1, size=4)
     assert n[3:1] == "000"
     assert n[1:0] == "01"
+
+def test_truncate():
+    n = Num(13, size=3)
+    assert n.num == 5
+    assert n.bin == "0b101"
+
+### Test operators
+
+def test_addition():
+    n = Num(13)
+    m = Num(12)
+    assert (n+m).num == 25
+
+def test_subtraction():
+    n = Num(342)
+    m = Num(122)
+    assert (n-m).num == 220
+
+#def test_lls():
+#    pass
+#
+#def test_lrs():
+#    pass
+#
+#def test_and():
+#    pass
+#
+#def test_or():
+#    pass
+#
+#def test_xor():
+#    pass
+#
+#def test_not():
+#    pass
