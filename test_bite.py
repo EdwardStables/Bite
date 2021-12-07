@@ -71,12 +71,19 @@ def test_subtraction():
     m = Num(122)
     assert (n-m).num == 220
 
-#def test_lls():
-#    pass
-#
-#def test_lrs():
-#    pass
-#
+def test_lls():
+    n = Num(12, size=16)
+    assert (n << 1).num == 24
+    assert (n << 0).num == 12
+
+def test_lrs():
+    n = Num(13, size=16)
+    assert (n >> 1).num == 6 
+    assert (n >> 0).num == 13
+    n = Num(10, size=16)
+    assert (n >> 1).num == 5
+
+
 #def test_and():
 #    pass
 #

@@ -41,6 +41,12 @@ class Num:
     def __sub__(self, other):
         return Num(self.num - other.num)
 
+    def __lshift__(self, shift):
+        return Num(self.bin[2:][shift:]+"0"*shift,base=2)
+
+    def __rshift__(self, shift):
+        return Num("0"*shift + self.bin[2:][: (-shift) if shift else len(self.bin)-1],base=2)
+
 def get_bin(num: int, length: int):
     bin_num = bin(num)[2:]
     if length > (current := len(bin_num)):
