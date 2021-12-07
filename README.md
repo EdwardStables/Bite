@@ -75,6 +75,6 @@ You can index into the bits of `Num` with python index notation. **Note:** as of
 
 `Num`s will support the operators you'd expect: add, sub, LLS, LRS, and, or, xor, and not. Additionally you will be able to do an arithmetic right shift with the `Num.asr()` function. 
 
-As of writing, Nums support addition and subtraction.
+As of writing, Nums support addition and subtraction, as well as logic left and right shifts.
 
 
